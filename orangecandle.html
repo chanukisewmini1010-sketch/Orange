@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake Surprise 🎂💙</title>
+
+<!-- 💙 Signature Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    height:100vh;
+    display:flex;
+    overflow:hidden;
+    background:linear-gradient(135deg,#4facfe,#e0f7ff);
+}
+
+/* LEFT SIDE */
+.left{
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* RIGHT SIDE */
+.right{
+    width:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* 📸 MEMORY BOX */
+.memory-box{
+    width:90%;
+    height:85%;
+
+    background: url("1.jpeg") center center/cover no-repeat;
+
+    border-radius:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+
+    padding-top:30px;
+    margin-top:30px;
+}
+.memory-box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.25);
+    z-index:0;
+}
+
+/* 💙 MEMORIES TITLE (hidden first) */
+.memory-title{
+    font-size:34px;
+    font-family:'Great Vibes', cursive;
+    color:#0077ff;
+
+    background:rgba(0,119,255,0.08);
+    padding:10px 30px;
+    border-radius:50px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+    transform:scale(0.5) rotate(-2deg);
+    opacity:0;
+    transition:1s ease;
+}
+
+.gallery{
+    display:none;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:20px;
+
+    background:rgba(255,255,255,0.25);
+    padding:15px;
+    border-radius:20px;
+    backdrop-filter:blur(5px);
+}
+.memory-title,
+.gallery{
+    position:relative;
+    z-index:1;
+}
+
+.gallery img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* 🎂 CAKE */
+/* 🎂 Animated Birthday Cake */
+.cake{
+    width:260px;
+    height:150px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(180deg,#ffffff,#d9f2ff);
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+    overflow:visible;
+
+    animation:floatCake 2s ease-in-out infinite;
+}
+
+@keyframes floatCake{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* BLUE CAKE */
+.cake::before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60%;
+    background:linear-gradient(180deg,#4facfe,#0077ff);
+    border-radius:0 0 20px 20px;
+}
+
+/* WHITE FROSTING */
+.cake::after{
+    content:"";
+    position:absolute;
+    top:-10px;
+    width:100%;
+    height:35px;
+    background:#ffffff;
+    border-radius:20px;
+}
+
+/* CAKE TEXT */
+.cake-title{
+    position:absolute;
+    font-weight:bold;
+    color:#0077ff;
+    font-size:18px;
+    z-index:3;
+}
+
+/* 🕯️ CANDLES */
+.candle{
+    width:10px;
+    height:40px;
+    background:white;
+    position:absolute;
+    top:-45px;
+    border-radius:5px;
+    cursor:pointer;
+    z-index:5;
+    box-shadow:0 3px 6px rgba(0,0,0,0.2);
+
+    animation:candleMove 1.5s ease-in-out infinite;
+}
+
+@keyframes candleMove{
+    0%{transform:rotate(-2deg);}
+    50%{transform:rotate(2deg);}
+    100%{transform:rotate(-2deg);}
+}
+
+.flame{
+    width:12px;
+    height:12px;
+    background:orange;
+    border-radius:50%;
+    position:absolute;
+    top:-12px;
+    left:-1px;
+
+    box-shadow:
+        0 0 10px orange,
+        0 0 20px gold,
+        0 0 30px orange;
+
+    animation:flame 0.5s infinite alternate;
+}
+
+@keyframes flame{
+    from{transform:scale(1);}
+    to{transform:scale(1.3); opacity:0.7;}
+}
+
+/* candle positions */
+.c1{ left:30px; }
+.c2{ left:75px; }
+.c3{ left:120px; }
+.c4{ left:165px; }
+.c5{ left:210px; }
+
+/* MESSAGE */
+.message{
+    margin-top:20px;
+    font-size:24px;
+    color:#0077ff;
+    font-weight:bold;
+    display:none;
+}
+
+/* PAPER PIECES */
+.paper{
+    position:absolute;
+    width:10px;
+    height:14px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- LEFT SIDE -->
+<div class="left">
+   
+
+    <div class="cake">
+
+        <div class="cake-title"> </div>
+
+        <div class="candle c1" onclick="blow(this)"><div class="flame"></div></div>
+        <div class="candle c2" onclick="blow(this)"><div class="flame"></div></div>
+        <div class="candle c3" onclick="blow(this)"><div class="flame"></div></div>
+        <div class="candle c4" onclick="blow(this)"><div class="flame"></div></div>
+        <div class="candle c5" onclick="blow(this)"><div class="flame"></div></div>
+
+    </div>
+
+    <div class="message" id="msg">
+         Happy Birthday My Orange ❤️
+    </div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="memory-box">
+
+    <div class="memory-title">💙 where we begins 💙</div>
+
+    <div class="gallery" id="gallery">
+        <img src="34.jpg">
+        <img src="33.jpg">
+        <img src="35.jpg">
+        <img src="36.jpg">
+    </div>
+
+</div>
+
+<script>
+
+let blown = 0;
+
+/* 🕯️ candle logic */
+function blow(candle){
+
+    let flame = candle.querySelector(".flame");
+
+    if(flame){
+        flame.remove();
+        blown++;
+    }
+
+    if(blown === 5){
+
+        document.getElementById("msg").style.display="block";
+
+        setTimeout(()=>{
+            document.getElementById("gallery").style.display="grid";
+        },1200);
+
+        /* 💙 SHOW MEMORIES TITLE AFTER CANDLES OFF */
+        setTimeout(()=>{
+            document.querySelector(".memory-title").style.opacity = "1";
+            document.querySelector(".memory-title").style.transform = "scale(1) rotate(-2deg)";
+        },800);
+
+        launchConfetti();
+		setTimeout(()=>{
+        window.location.href = "orangememory.html";
+         },4000);
+    }
+}
+
+/* 💥 LEFT + RIGHT CORNER EXPLOSION */
+function launchConfetti(){
+
+    createExplosion(80, window.innerHeight - 120);
+
+    setTimeout(()=>{
+        createExplosion(window.innerWidth - 80, window.innerHeight - 120);
+    },400);
+}
+
+/* 💥 explosion engine */
+function createExplosion(x, y){
+
+    for(let i=0;i<100;i++){
+
+        let paper = document.createElement("div");
+        document.body.appendChild(paper);
+
+        let colors = ["#0077ff","#ffffff","#a6d9ff"];
+
+        paper.classList.add("paper");
+
+        paper.style.background = colors[Math.floor(Math.random()*colors.length)];
+        paper.style.left = x + "px";
+        paper.style.top = y + "px";
+
+        let angle = Math.random() * 2 * Math.PI;
+        let speed = Math.random() * 10 + 3;
+
+        let vx = Math.cos(angle) * speed;
+        let vy = Math.sin(angle) * speed;
+
+        let posX = x;
+        let posY = y;
+
+        let fall = setInterval(()=>{
+
+            posX += vx;
+            posY += vy;
+            vy += 0.18;
+
+            paper.style.left = posX + "px";
+            paper.style.top = posY + "px";
+            paper.style.transform = "rotate("+(posX+posY)+"deg)";
+
+        },20);
+
+        setTimeout(()=>{
+            clearInterval(fall);
+            paper.remove();
+        },2500);
+    }
+}
+
+</script>
+
+</body>
+</html>

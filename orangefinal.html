@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Surprise 💖</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    height:100vh;
+
+    /* 💙 BACKGROUND IMAGE */
+    background:url("30.jpg") center/cover no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    text-align:center;
+     color:white; 
+    overflow:hidden;
+    padding-top:80px;
+    position:relative;
+}
+
+/* MAIN TEXT */
+.container{
+    max-width:700px;
+    padding:20px;
+    transform: translateY(40px);
+
+    position:relative;
+    z-index:1;
+}
+
+/* TITLE */
+h1{
+    font-size:28px;
+    font-weight:bold;
+	color:#002244;
+}
+
+/* PARAGRAPH */
+p{
+    font-size:18px;
+    line-height:1.6;
+    margin-top:15px;
+	color:white;
+}
+
+/* EMOJIS */
+.emoji{
+    font-size:28px;
+    margin-top:20px;
+}
+
+.photo-row{
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.photo-track{
+    display: inline-block;
+    animation: scrollLeft 12s linear infinite;
+}
+
+.photo-row img{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+    border-radius:20px;
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 0 8px 20px rgba(0, 150, 255, 0.4);
+    margin: 0 10px;
+}
+
+/* animation */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.35); /* 💙 transparency layer */
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+
+    z-index:0;
+}
+
+</style>
+</head>
+
+<body>
+<div class="overlay"></div>
+
+<div class="container">
+
+    <h1>❤️ Happy Birthday My Love ❤️</h1>
+
+    <p>
+        Thank you for being part of my life.  
+        Thank you for all our memories, laughs, inside jokes, and adventures.  
+        I hope this year brings you happiness, success, good health and lots of cake 🎂.  
+        Love you forever ❤️
+    </p>
+
+    
+
+</div>
+
+<!-- PHOTOS MOVING RIGHT → LEFT -->
+<div class="photo-row">
+    <div class="photo-track">
+        <img src="17.jpg">
+        <img src="30.jpg">
+        <img src="25.jpg">
+        <img src="22.jpg">
+
+        <!-- duplicate for smooth loop -->
+         <img src="29.jpg">
+        <img src="20.jpg">
+        <img src="15.jpg">
+        <img src="31.jpg">
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Challenge 💙</title>
+
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    font-family:Arial;
+    text-align:center;
+    overflow:hidden;
+
+    background:linear-gradient(135deg,#4facfe,#e0f7ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* 🌊 FLOATING BACKGROUND VEHICLES */
+.vehicle{
+    position:absolute;
+    bottom:-120px;
+    opacity:0.7;
+    animation:floatUp linear infinite;
+}
+
+.car{
+    width:60px;
+    height:25px;
+    background:#ffffff;
+    border-radius:15px 15px 5px 5px;
+}
+
+.car::before,
+.car::after{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    width:10px;
+    height:10px;
+    background:#0077ff;
+    border-radius:50%;
+}
+.car::before{ left:10px; }
+.car::after{ right:10px; }
+
+.boat{
+    width:70px;
+    height:25px;
+    background:#a6d9ff;
+    border-radius:0 0 40px 40px;
+}
+
+.rocket{
+    width:20px;
+    height:50px;
+    background:#0077ff;
+    border-radius:10px;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-120vh);opacity:0;}
+}
+
+/* TITLE */
+h1{
+    color:#0077ff;
+    font-size:32px;
+    margin-bottom:60px;
+    text-shadow:0 5px 10px rgba(0,0,0,0.1);
+    z-index:2;
+}
+
+/* BUTTONS */
+button{
+    padding:15px 35px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    z-index:2;
+}
+
+/* YES BUTTON (⬅️ moved slightly left) */
+#yes{
+    background:#0077ff;
+    color:white;
+    margin-right:20px;   /* 👈 shift left */
+}
+
+#yes:hover{
+    transform:scale(1.1);
+}
+
+/* NO BUTTON */
+#no{
+    background:#ffffff;
+    color:#0077ff;
+    border:2px solid #0077ff;
+    position:absolute;
+    left:55%;
+    top:55%;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>💙 Do You Love Me? ❤️</h1>
+
+<div>
+    <button id="yes" onclick="goNext()">YES 💙</button>
+</div>
+
+<button id="no">NO 😏</button>
+
+<script>
+
+/* 🚗 floating background */
+function createVehicle(){
+
+    let v = document.createElement("div");
+    v.classList.add("vehicle");
+
+    let types = ["car","boat","rocket"];
+    v.classList.add(types[Math.floor(Math.random()*types.length)]);
+
+    v.style.left = Math.random()*100 + "vw";
+    v.style.animationDuration = (6 + Math.random()*6) + "s";
+
+    document.body.appendChild(v);
+
+    setTimeout(()=>v.remove(),12000);
+}
+
+setInterval(createVehicle,300);
+
+/* 😏 NO button escape */
+const noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+
+function moveButton(){
+    let x = Math.random() * (window.innerWidth - 120);
+    let y = Math.random() * (window.innerHeight - 100);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+/* 👉 next page */
+function goNext(){
+    window.location.href = "orangecandle.html";
+}
+
+</script>
+
+</body>
+</html>
